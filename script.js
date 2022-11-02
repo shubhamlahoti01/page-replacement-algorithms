@@ -130,8 +130,11 @@ function pageFaultsLRU(pages, n, capacity) {
 }
 
 function pushData() {
+  let summaryCheck = document.querySelector('#Summary').checked;
+
   let pra = document.querySelector('#pra').value;
   pra = pra.toString();
+
   pages = [];
   let inputText = document.getElementById('references').value;
   let frames = Number(document.querySelector('.noofframes').value);
@@ -146,29 +149,37 @@ function pushData() {
     faults = pageFaultsLRU(pages, pages.length, frames);
   } else if (pra === 'FIFO') {
     faults = pageFaultsFIFO(pages, pages.length, frames);
+  } else {
+    const part2 = document.querySelector('.part2');
+    document.querySelector('.part1').innerHTML = '';
+    document.querySelector('.part3').innerHTML = '';
+    part2.innerHTML = '';
+    part2.innerHTML = `<h1 class='opt'><b>Feature Not Available Yet...</b></h1>`;
+    return;
   }
 
-  buildSchedule(frames, pra, pages, faults);
+  buildSchedule(frames, pra, pages, faults, summaryCheck);
 }
-function buildSchedule(frames, str, pages, faults) {
+function buildSchedule(frames, str, pages, faults, summaryCheck) {
   /*_______________ part-1 _________________*/
-  const part1 = document.querySelector('.part1');
-  part1.innerHTML = '';
-  const head = document.createElement('div');
-  head.id = 'head';
-  head.innerHTML = `<h2>Summary - ${str} Algorithm</h2>`;
-  part1.appendChild(head);
-  const base = document.createElement('div');
-  base.id = 'base';
-  base.innerHTML = `
+  if (summaryCheck) {
+    const part1 = document.querySelector('.part1');
+    part1.innerHTML = '';
+    const head = document.createElement('div');
+    head.id = 'head';
+    head.innerHTML = `<h2>Summary - ${str} Algorithm</h2>`;
+    part1.appendChild(head);
+    const base = document.createElement('div');
+    base.id = 'base';
+    base.innerHTML = `
     <ul>
         <li>Total frames: ${frames}</li>
         <li>Algorithm: ${str}</li>
         <li>Reference string length: ${pages.length} references</li>
         <li>String: ${pages}</li>
       </ul>`;
-  part1.appendChild(base);
-
+    part1.appendChild(base);
+  }
   /*_______________ part-2 _________________*/
   const count = {};
   pages.forEach((element) => {
@@ -213,6 +224,7 @@ function buildTable(arr) {
     mytable += '</tr>';
     i++;
   }
+
   mytable += '</table>';
   part2.innerHTML = mytable;
 }
