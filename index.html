@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Replacement Algorithms</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="left">
+        <div class="head">Page Replacement Algorithm</div>
+        <div class="inputsection">
+          <div class="frmdiv">
+            <label for="noofframes" id="high">Number of Frames: </label>
+            <input type="text" value="3" class="noofframes" />
+          </div>
+          <div class="algodiv">
+            <label for="pagereplacementalgo" id="high"
+              >Page Replacement Algorithm:
+            </label>
+            <select name="pagereplacementalgo" id="pra">
+              <option value="FIFO">First In First Out(FIFO)</option>
+              <option value="LRU">Least Recently Used(LRU)</option>
+              <option value="OPT">Optimal(OPT)</option>
+            </select>
+          </div>
+          <div class="summarydiv">
+            <label for="Summary" id="high">Generate: </label>
+            <input type="checkbox" name="Summary" id="Summary" checked />
+            Summary
+          </div>
+          <div class="refdiv">
+            <label for="references" id="high">References: </label>
+            <input
+              type="text"
+              id="references"
+              value="1 2 3 4 2 1 5 6 2 1 2 3"
+            />
+          </div>
+          <div class="btndiv">
+            <button onclick="pushData()">Submit</button>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="output">Output</div>
+        <div class="solution">
+          <div class="part1"></div>
+          <div class="part2"></div>
+
+          <div class="part3"></div>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
