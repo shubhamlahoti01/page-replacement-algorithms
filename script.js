@@ -131,7 +131,10 @@ function pageFaultsLRU(pages, n, capacity) {
 
 function pushData() {
   let summaryCheck = document.querySelector('#Summary').checked;
-
+  if (!summaryCheck) {
+    const part1 = document.querySelector('.part1');
+    part1.innerHTML = '';
+  }
   let pra = document.querySelector('#pra').value;
   pra = pra.toString();
 
